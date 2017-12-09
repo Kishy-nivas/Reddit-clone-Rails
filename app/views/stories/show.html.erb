@@ -1,0 +1,19 @@
+<p> Name : <%= @story.name %> </p> 
+<p> link submitted : <%= link_to @story.name,@story.link %> </p>
+<h4> 
+  <span id= "vote-score">
+  score: <%= @story.votes.size %> 
+  
+  </span>
+</h4>
+
+<p> submitted by </p> 
+<%= image_tag avatar_url(@user) %> <br> 
+<%= @user.name %> 
+
+  <div  id= "form-vote"> 
+    <%= form_for [@story,Vote.new], remote: true do |f| %> 
+              <%= f.submit 'Upvote' %>
+
+    <% end %> 
+  </div> 

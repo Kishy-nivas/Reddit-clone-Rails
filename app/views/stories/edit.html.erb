@@ -1,0 +1,14 @@
+<% if @story.errors.any? %> 
+    <% @story.errors.full_messages.each do |msg| %> 
+    <div class ="alert-warning"> <%= msg %> </div>
+    <% end %> 
+  <% end %> 
+
+
+<%= form_for @story do |f| %>
+  <p> <%= f.label :name %> </p>  
+  <%= f.text_field :name %> 
+  <p><%= f.label :link %> </p>
+  <%= f.text_field :link %> 
+  <p> <%= f.submit %> </p>
+<% end %> 

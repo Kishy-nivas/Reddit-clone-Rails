@@ -1,0 +1,22 @@
+<h2> Login </h2> 
+<div class = "container"> 
+  <%= form_tag session_path,html: {class: 'form-group'} do %> 
+  <p> 
+    <label> Email </label> <br>
+    <%= email_field_tag 'email' %> 
+  </p>
+  <p>    
+    <label> Password:</label> <br>
+    <%= password_field_tag 'password' %> 
+  </p> 
+  <p> 
+    <label> Submit </label><br>
+   <%= submit_tag 'submit' %> 
+    
+  
+<% end %> 
+
+  
+
+  
+  

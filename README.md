@@ -1,24 +1,20 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+* Ruby version - 2.3 
 
-* Ruby version
+* uses JQuery to like/dislike Stories,comments, and add dynammic comments without page reload 
 
-* System dependencies
+* uses User authentication from scratch (without any gem )
 
-* Configuration
 
-* Database creation
+* To do 
 
-* Database initialization
+* search functionality 
+* add categories 
+* notification 
+* subscribe to categories 
+* make UI design neat using SASS 
+* message system between users 
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

@@ -11,8 +11,8 @@
     <ul class="nav navbar-nav navbar-right">
     <% if @current_user %>
 
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> welcome <%= @current_user.name %>  </a></li>
-      <li><%= link_to 'logout',session_path,method: :delete %> <span class="glyphicon glyphicon-log-in"></span></li>
+      <li><%= link_to  @current_user.name,user_path(@current_user.id) %> <span class="glyphicon glyphicon-user"></span></li>
+      <li><%= link_to 'logout',session_path,method: :delete %> <span  class="glyphicon glyphicon-log-in"></span></li>
     <% else %> 
        <li><%= link_to 'sign up',new_user_path   %><span class="glyphicon glyphicon-user"></span> </li>
         <li><%= link_to 'login',new_session_path %> <span class="glyphicon glyphicon-log-in"></span></li>

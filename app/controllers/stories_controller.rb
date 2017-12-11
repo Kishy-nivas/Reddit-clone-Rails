@@ -1,5 +1,6 @@
 class StoriesController < ApplicationController
-  before_action :authenticate_user, except: [:show,:index]
+  before_action :authenticate_user, except: [:show,:index,]
+  before_action :set_story , only: [:edit,:update,:like,:unlike,:show]
 
   def index
     @stories = Story.all
@@ -21,13 +22,11 @@ class StoriesController < ApplicationController
 
 
   def edit 
-    @story = Story.find(params[:id])
   end 
 
 
 
   def update
-    @story = Story.find(params[:id])
     if @story.update(story_params) 
       flash[:notice] = "Editted successfully!"
       redirect_to @story
@@ -37,7 +36,6 @@ class StoriesController < ApplicationController
   end 
 
   def show 
-    @story = Story.find(params[:id])
     @user = User.find_by(id: @story.user_id)
   end 
 
@@ -51,9 +49,32 @@ class StoriesController < ApplicationController
     end
   end 
 
+  def like
+    @story.liked_by current_user 
+    respond_to do |format| 
+      format.html {redirect_to :back }
+      format.js  
+    end
+  end
+
+
+  def unlike 
+    @story.unliked_by current_user 
+    respond_to do |format| 
+      format.html {redirect_to :back}
+      format.js  
+    end 
+  end 
+
+
+
   private 
   def story_params 
     params.require(:story).permit(:name,:link)
+  end 
+
+  def set_story 
+    @story = Story.find(params[:id])
   end 
 
 

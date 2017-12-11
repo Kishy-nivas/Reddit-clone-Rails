@@ -12,6 +12,7 @@ class SessionsController < ApplicationController
     @current_user= User.find_by(email: params[:email])
     if @current_user and @current_user.authenticate(params[:password])
       session[:user_id]= @current_user.id 
+      flash[:notice] = "Welcome #{@current_user.name } !"
       redirect_to stories_path 
     else 
       flash[:notice] = "Invalid Email or Password, please try again"

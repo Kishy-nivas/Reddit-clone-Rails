@@ -36,6 +36,8 @@ gem 'jbuilder', '~> 2.5'
 #added gems 
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'jquery-rails'
+gem 'activerecord-reputation-system', require: 'reputation_system'
+gem 'acts_as_votable', '~> 0.11.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

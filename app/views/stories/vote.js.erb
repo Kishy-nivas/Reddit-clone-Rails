@@ -1,0 +1,3 @@
+$("#like_<%= @story.id %>").removeClass('glyphicon-heart-empty').addClass('glyphicon-heart');
+$("#like_<%= @story.id %>").attr("href", '/stories/<%= @story.id %>/unlike');
+$("#likes_<%= @event.id %>").html("<%= j ( render partial: 'stories/likes', locals: { story: @story } ) %>");

@@ -5,10 +5,10 @@
   <% end %> 
   
 
-<%= form_for @story do |f| %>
+<%= form_for( @story) do |f| %>
   <p> <%= f.label :name %> </p>  
-  <%= f.text_field :name %> 
-  <p><%= f.label :link %> </p>
-  <%= f.text_field :link %> 
+  <%= f.text_area :name ,:class => "form-control" %> <br> 
+  <p><%= f.label :description %> </p>
+  <%= f.text_area  :link ,:class => "form-control" %> <br>
   <p> <%= f.submit %> </p>
 <% end %> 

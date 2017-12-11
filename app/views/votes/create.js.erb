@@ -1,2 +1,2 @@
-$('#vote-score').html("score : " + <%= @story.votes.size %> )
+$('#vote').html( <%= @story.reputation_for(:votes).to_i %>  )
 

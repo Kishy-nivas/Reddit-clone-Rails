@@ -14,6 +14,13 @@ class UsersController < ApplicationController
 
   end 
 
+  def show
+  @user = User.includes(:stories).find(params[:id])
+  
+  end 
+
+
+  private 
   def user_params 
      params.require(:user).permit(:name,:email,:password,:password_confirmation)
    

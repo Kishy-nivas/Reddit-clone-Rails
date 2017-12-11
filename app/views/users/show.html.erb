@@ -1,0 +1,17 @@
+<ul class="list-group">
+  <li class="list-group-item">username : <%= @user.name %> </li>
+  <li class="list-group-item">Email-id : <%= @user.email %> </li>
+  <li class="list-group-item">Display pic: <%= image_tag avatar_url(@user) %> </li> 
+  <% user = post_points(@user) %> 
+  <li class="list-group-item-success"> post points : <%= user[0] %> </li>
+  <li class="list-group-item-success">comment points : yet to be implemented </li>
+
+</ul> 
+
+<small> stories submitted : </small>
+<% user[1].each do |i| %> 
+ <ul class="list-group">
+ <% story = Story.find_by(name: i) %> 
+  <li class="list-group-item"><%=link_to story.name ,story_path(story)  %> <span class ="badge"> <%= story.get_likes.size %> </span>  </li>
+</ul>
+<% end %>  

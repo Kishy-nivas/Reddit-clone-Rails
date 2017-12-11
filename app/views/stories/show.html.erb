@@ -1,19 +1,42 @@
-<p> Name : <%= @story.name %> </p> 
-<p> link submitted : <%= link_to @story.name,@story.link %> </p>
-<h4> 
-  <span id= "vote-score">
-  score: <%= @story.votes.size %> 
-  
-  </span>
-</h4>
+ <div class="jumbotron">
+ <%= image_tag avatar_url(@user) %>     <%= @story.name %> <br> 
 
-<p> submitted by </p> 
-<%= image_tag avatar_url(@user) %> <br> 
-<%= @user.name %> 
+ <%= link_to @user.name,user_path(@user) %> 
 
-  <div  id= "form-vote"> 
-    <%= form_for [@story,Vote.new], remote: true do |f| %> 
-              <%= f.submit 'Upvote' %>
 
-    <% end %> 
-  </div> 
+</div>  
+
+
+<div class="well" > 
+  <%= @story.link %> 
+</div>
+
+
+<% if @current_user.liked? @story  %>
+  <%= link_to '', unlike_story_path(@story), remote: true, id: "like_#{@story.id}", class: "glyphicon glyphicon-heart" %>
+
+<% else %>
+  <%= link_to '', like_story_path(@story), remote: true, id: "like_#{@story.id}", class:  "glyphicon glyphicon-heart-empty" %>
+<% end %>
+votes : <span id ="likes"> <%= display_likes @story %> </span>
+
+
+<% if @story.comments.empty? %> 
+  <h3> No comments </h3>
+<% else %> 
+  <div id='com'>
+      <h3 class="well"> comments </h3>
+      <%= render @story.comments %>
+    </div>
+
+<% end %> 
+
+<%= form_for([@story,@story.comments.new],remote: true )   do |f| %> 
+  <%= f.label :description%><br> 
+  <%= f.text_area :description ,:class => "form-control" %> 
+  <p> <%= f.submit %> </p>
+<% end %> 
+
+
+
+

@@ -1,9 +1,7 @@
 <h3> Available stories </h3> 
 <% @stories.each do |story| %> 
-  <p> 
-    <%=link_to story.name,story_path(story) %> 
-    <%= link_to story.link,story.link %>    <%= link_to 'Edit',edit_story_path(story) %> 
-  </p> 
-
-
+   <ul class="list-group">
+      <li class="list-group-item"><%= link_to story.name,story_path(story ) %>  <span class="badge"> 
+       <%= story.get_likes.size %>   </span></li>
+   </ul> 
 <% end %> 

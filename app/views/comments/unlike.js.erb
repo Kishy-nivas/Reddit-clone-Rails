@@ -1,0 +1,3 @@
+$("#like_<%= @comment.id %>").removeClass('glyphicon-heart').addClass('glyphicon-heart-empty');
+$("#like_<%= @comment.id %>").attr("href", '/stories/<%= @story.id %>/comments/<%= @comment.id %>/like');
+$("#likes_<%= @comment.id %> ").html("<%= display_likes_comment @comment %> ");

@@ -24,5 +24,5 @@ Rails.application.routes.draw do
   get '/stories/:story_id/comments/:id/unlike' ,to: 'comments#unlike', as: 'comment_unlike'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'application#home'
+  root 'stories#index'
 end

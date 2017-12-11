@@ -11,15 +11,15 @@
   <%= @story.link %> 
 </div>
 
+<% if !@current_user.nil? %> 
+  <% if @current_user.liked? @story  %>
+    <%= link_to '', unlike_story_path(@story), remote: true, id: "like_#{@story.id}", class: "glyphicon glyphicon-heart" %>
 
-<% if @current_user.liked? @story  %>
-  <%= link_to '', unlike_story_path(@story), remote: true, id: "like_#{@story.id}", class: "glyphicon glyphicon-heart" %>
-
-<% else %>
-  <%= link_to '', like_story_path(@story), remote: true, id: "like_#{@story.id}", class:  "glyphicon glyphicon-heart-empty" %>
-<% end %>
+  <% else %>
+    <%= link_to '', like_story_path(@story), remote: true, id: "like_#{@story.id}", class:  "glyphicon glyphicon-heart-empty" %>
+  <% end %>
 votes : <span id ="likes"> <%= display_likes @story %> </span>
-
+<% end %> 
 
 <% if @story.comments.empty? %> 
   <h3> No comments </h3>

@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params) 
     if @user.save 
       session[:user_id] = @user.id 
-      redirect_to stories_path 
+      redirect_to root_path 
     else 
       render 'new'
     end
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   def show
   @user = User.includes(:stories).find(params[:id])
-  
+
   end 
 
 

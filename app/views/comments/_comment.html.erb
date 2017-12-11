@@ -1,13 +1,14 @@
 <div id ="com" >
   <div class="panel panel-default">
     <div class="panel-heading"><%= link_to comment.user.name,user_path(comment.user) %>  </div>
-    
+  <% if !@current_user.nil? %> 
     <% if @current_user.liked? comment  %>
     <%= link_to '', comment_unlike_path(@story,comment) , remote: true, id: "like_#{comment.id}", class: "glyphicon glyphicon-heart" %>
 
   <% else %>
     <%= link_to '', comment_like_path(@story,comment ), remote: true, id: "like_#{comment.id}", class:  "glyphicon glyphicon-heart-empty" %>
   <% end %>
+<% end %> 
   votes : <span id ="likes_<%= comment.id %>"> <%= display_likes_comment comment %> </span><div class="panel-body"><%= comment.description %> </div>
   </div>
 </div>

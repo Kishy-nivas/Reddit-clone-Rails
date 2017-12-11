@@ -3,7 +3,12 @@ class StoriesController < ApplicationController
   before_action :set_story , only: [:edit,:update,:like,:unlike,:show]
 
   def index
-    @stories = Story.all
+    if params[:search]
+      @stories = Story.search(params[:search]).order("created_at DESC")
+    else 
+      @stories = Story.all
+    end 
+
   end
 
   def new

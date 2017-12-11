@@ -1,4 +1,8 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user,only:[:create]
+
+
+
   def create
     @story = Story.find(params[:story_id ])
     @comment =@story.comments.create(comment_params)
@@ -30,6 +34,15 @@ class CommentsController < ApplicationController
       format.js  
     end
   end
+  
+  def authenticate_user 
+    unless session[:user_id]
+      flash[:notice] = "please sign in to create a link"
+      redirect_to new_session_path
+    else 
+      return 
+    end
+  end 
 
 
   private 

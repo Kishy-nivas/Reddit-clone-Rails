@@ -1,7 +1,11 @@
-<h3> Available stories </h3> 
-<% @stories.each do |story| %> 
-   <ul class="list-group">
-      <li class="list-group-item"><%= link_to story.name,story_path(story ) %>  <span class="badge"> 
-       <%= story.get_likes.size %>   </span></li>
-   </ul> 
-<% end %> 
+<h5 class="well"> Available stories:</h5> 
+
+
+<%= form_tag stories_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
+<%= render partial: "story",collection: @stories.sort_by {|story| story.get_likes.size }.reverse %> 

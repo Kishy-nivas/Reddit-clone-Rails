@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user,only:[:create]
+  before_action :authenticate_user,only:[:create,:like,:unlike]
 
 
 
@@ -15,6 +15,23 @@ class CommentsController < ApplicationController
 
   end
 
+  def edit
+     @story = Story.find(params[:story_id])
+     @comment = Comment.find(params[:id])
+  end 
+
+  def update
+    @comment = Comment.find(params[:id])
+    @story = Story.find(params[:story_id])
+
+    if @comment.update(comment_params)
+      flash[:notice] = "comment edited successfully"
+      redirect_to @story 
+    else 
+      render 'edit'
+    end 
+  end
+
   def  like 
     @comment = Comment.find(params[:id])
     @story = Story.find(params[:story_id])
@@ -26,8 +43,8 @@ class CommentsController < ApplicationController
   end
   
   def unlike   
-    @story= Story.find(params[:story_id])
     @comment = Comment.find(params[:id])
+    @story = Story.find(params[:story_id])
     @comment.unliked_by current_user 
     respond_to do |format| 
       format.html {redirect_to :back}
@@ -37,7 +54,7 @@ class CommentsController < ApplicationController
   
   def authenticate_user 
     unless session[:user_id]
-      flash[:notice] = "please sign in to create a link"
+      flash[:notice] = "please sign in to continue"
       redirect_to new_session_path
     else 
       return 

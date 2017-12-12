@@ -10,7 +10,7 @@
 
 * To do 
 
-* search functionality 
+* search functionality - done 
 * add categories 
 * notification 
 * subscribe to categories 

@@ -1,0 +1,12 @@
+<% if @comment.errors.any? %> 
+    <% @comment.errors.full_messages.each do |msg| %> 
+    <div class ="alert-warning"> <%= msg %> </div>
+    <% end %> 
+  <% end %> 
+
+
+<%= form_for ([@story,@comment]) do |f| %>
+  <p> <%= f.label :description %> </p>  
+  <%= f.text_area :description ,:class => 'form-control' %> 
+  <p> <%= f.submit %> </p>
+<% end %> 

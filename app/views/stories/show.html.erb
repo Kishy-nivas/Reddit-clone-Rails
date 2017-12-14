@@ -1,13 +1,13 @@
- <div class="jumbotron">
+<%= stylesheet_link_tag "stories" %>
+<div class="well">
+
  <%= image_tag avatar_url(@user) %>     <%= @story.name %> <br> 
 
  <%= link_to @user.name,user_path(@user) %> 
+</div> 
 
 
-</div>  
-
-
-<div class="well" > 
+<div class="jumbotron" > 
   <%= @story.link %> 
 </div>
 
@@ -30,10 +30,12 @@ votes : <span id ="likes"> <%= display_likes @story %> </span>
 <% else %> 
   <div id='com'>
       <h3 class="well"> comments </h3>
-      <%= render @story.comments %>
+          <%= render @story.comments %>
     </div>
 
 <% end %> 
+<div id = "story"> 
+</div>
 
 <%= form_for([@story,@story.comments.new],remote: true )   do |f| %> 
   <%= f.label :description%><br> 

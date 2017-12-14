@@ -11,10 +11,10 @@
   <% else %> 
         <%= link_to '', comment_like_path(@story,comment ), remote: false, id: "like_#{comment.id}", class:  "glyphicon glyphicon-heart-empty" %>
   <% end %> 
-  votes : <span id ="likes_<%= comment.id %>"> <%= display_likes_comment comment %> </span><div class="panel-body"><%= comment.description %> </div> 
-  <% if !@current_user.id.nil?  and @current_user.id == comment.user.id  %> 
+  votes : <span id ="likes_<%= comment.id %>"> <%= display_likes_comment comment %> </span><div class="panel-body"><%= comment.description %> </div>   
+    <% if !@current_user.nil? and @current_user.id == comment.user.id  %> 
         <%= link_to  'Edit', edit_story_comment_path(@story,comment) %> 
-    <% end %> 
+      <% end %>
   </div>
 </div>
 <br>

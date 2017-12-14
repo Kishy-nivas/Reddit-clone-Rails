@@ -1,2 +1,39 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+
+$primaryColor: light-white;
+$firstValue: 150.5%;
+$firstValue: 50px !default;
+$container-width: 70;
+$jumbotron-width: 30;
+$containerColor : red;
+
+h1
+{
+	font-color: red;
+}
+body {
+    background: linear-gradient(white,light-white);
+    font-size: $firstValue;
+
+}
+.container {
+	width: $container-width;
+}
+.jumbotron{
+	background-color: light-blue;
+
+}
+
+.container-fluid{
+	background-color: black;
+}
+.well {
+	background-color: white;
+	font-color: white;
+	background-size: 20px;
+	font-weight: bold;
+}
+
+

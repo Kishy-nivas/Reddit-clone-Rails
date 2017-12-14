@@ -1,5 +1,5 @@
 rakclass AddUserRefToVotes < ActiveRecord::Migration[5.1]
-  def change
+ def change
     add_reference :votes, :user, foreign_key: true
   end
 end

@@ -1,6 +1,6 @@
-<h2> Login </h2> 
+<h2 style="color: blue "> Login </h2> 
 <div class = "container"> 
-  <%= form_tag session_path,html: {class: 'form-group'} do %> 
+  <%= form_tag session_path,html: {:class =>  'form-group'} do %> 
   <p> 
     <label> Email </label> <br>
     <%= email_field_tag 'email' %> 

@@ -1,3 +1,5 @@
+<% @title = "signup form" %> 
+
 <% if @user.errors.any? %> 
   <% @user.errors.full_messages.each do |msg|  %> 
     <%= msg %> 

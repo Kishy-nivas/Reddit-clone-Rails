@@ -16,8 +16,10 @@ class StoriesController < ApplicationController
   end 
 
   def create
+    @story = Story.new(story_params) 
+    @story.user_id = @current_user.id 
 
-    if @current_user.stories.create(story_params)  
+    if @story.save 
       flash[:notice] = "Submitted successfully!"
       redirect_to stories_path 
     else

@@ -49,7 +49,7 @@ class StoriesController < ApplicationController
 
   def authenticate_user 
     unless session[:user_id]
-      flash[:notice] = "please sign in to create a link"
+      flash[:notice] = "This action requires users to login first "
       redirect_to new_session_path
     else 
       return 

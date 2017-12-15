@@ -1,3 +1,4 @@
+<% @title = 'submit story' %> 
 <% if @story.errors.any? %> 
     <% @story.errors.full_messages.each do |msg| %> 
     <div class ="alert-warning"> <%= msg %> </div>

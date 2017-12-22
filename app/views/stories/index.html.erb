@@ -1,15 +1,33 @@
-<%= stylesheet_link_tag "stories" %>
+
+<style> 
+.index{
+  padding-top: 3em; 
+  padding-left: 5em;
+
+
+ }
+
+
+</style>
+
+  <div class="row">
+    <div class="col-md-8 index">
+        <h2> Available stories</h2>
+      <%= render partial: "story",collection: @stories.sort_by {|story| story.get_likes.size }.reverse %> 
+    
+    </div>
+    <div class="col-md-4"> 
+      <%= form_tag stories_path, :method => 'get' do %>
+    <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", :name => nil %>
+    </p>
+  <% end %>
+    
+      </div>
+    
+  
+  </div>
 
 
 
-<h5 class="well" style="color: red"> Available stories:</h5> 
-
-
-<%= form_tag stories_path, :method => 'get' do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
-  </p>
-<% end %>
-
-<%= render partial: "story",collection: @stories.sort_by {|story| story.get_likes.size }.reverse %> 
